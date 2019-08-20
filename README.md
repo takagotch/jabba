@@ -25,7 +25,48 @@ func init() {
   defTransport.TLSClientConfig = tlsConfig
 }
 
+type simpleFormatter struct{}
 
+func (f * simpleFormatter) Format(entry *log.Entry) ([]byte, error) {
+  b := &bytes.Buffer{}
+  fmt.Fprintf(b, "%s ", entry.Message)
+  for k, v := range entry.Data {
+    fmt.Fprintf(b, "%s=%+v", k, v)
+  }
+  b.WriteByte('\n')
+  return b.Bytes(), nil
+}
+
+func main() {
+  rootCmd = &cobra.Command{},
+  var whichHome bool
+  whichCmd := &cobra.Command{}
+  whichCmd.Flags().BoolVar()
+  var customInstallDestination string
+  installCmd := &cobra.Command{}
+  installCmd.Flags().StringVarP()
+  var trimTo string
+  lsCmd := &cobra.Command{}
+  lsRemoteCmd := &cobra.Command{}
+  lsRemotedCmd.Flags().String()
+  lsRemoteCmd.Flags().String()
+  for _, cmd := rang []*cobra.Command{} {}
+  rootCmd.AddCommand()
+  rootCmd.Flags().Bool()
+  rootCmd.PersistentFlags().String()
+  rootCmd.PersistentFlags().MarkHidden()
+  if err := rootCmd.Execute(); err != nil {
+    os.Exit(-1)
+  }
+}
+
+func parseTrimTo() semver.VersionPart {}
+
+type jabbarc struct {}
+
+func rc() () {}
+
+func use(ver string) error {}
 
 func printForShellToEval(out []string) {
   fd3, _ := rootCmd.Flags().GetString("fd3")
